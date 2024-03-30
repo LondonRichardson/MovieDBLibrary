@@ -8,12 +8,12 @@ using System.IO;
 
 namespace MovieDBLibrary.Controllers
 {
-    public class MoviesController : Controller
+    public class GenresController : Controller
     {
 
         private readonly MovieDbContext _dBContext;
 
-        public MoviesController(MovieDbContext dBContext)
+        public GenresController(MovieDbContext dBContext)
         {
             _dBContext = dBContext;
         }

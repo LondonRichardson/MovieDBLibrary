@@ -1,0 +1,76 @@
+﻿@model MoviesViewModel
+@using MoviDBLibrary.DataAccess.EF.Models
+
+@{
+    string pageType = Model.CurrentMovie.MovieId > 0 ? "Update Movie" : "Create Movie";
+
+    ViewData["Title"] = $"MovieDBLibrary Wep Application | {pageType}";
+}
+<form action="~/Movies/Index" method="post">
+    <div>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 20px 0px;">@pageType</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Title: </label>
+                <input type="text" class="form-control" name="title" value="@Model.CurrentMovie.Title" />
+            </div>
+            <div class="col-md-3 form-group">
+                <label>Director: </label>
+                <input type="text" class="form-control" name="Director" value="@Model.CurrentMovie.Director" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>LeadActorActress: </label>
+                <input type="text" class="form-control" name="leadActorActress" value="@Model.CurrentMovie.LeadActorActress" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Cast: </label>
+                <input type="text" class="form-control" name="cast" value="@Model.CurrentMovie.Cast" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Gross Revenue: </label>
+                <input type="text" class="form-control" name="grossRevenue" value="@Model.CurrentMovie.GrossRevenue" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Maturity Rating: </label>
+                <input type="text" class="form-control" name="maturityRating" value="@Model.CurrentMovie.MaturityRating" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>ImageUrl: </label>
+                <input type="text" class="form-control" name="imageUrl" value="@Model.CurrentMovie.ImageUrl" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Movie Genres: </label>
+                <input type="text" class="form-control" name="moviesGenres" value="@Model.CurrentMovie.MoviesGenres" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>UserLists: </label>
+                <input type="text" class="form-control" name="userLists" value="@Model.CurrentMovie.UserLists" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-secondary" onclick="location.href = '/Movies/Index'">CANCEL</button>
+                <button type="submit" class="btn btn-primary">SAVE MOVIE</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="movieId" value="@Model.CurrentMovie.MovieId" />
+</form>
