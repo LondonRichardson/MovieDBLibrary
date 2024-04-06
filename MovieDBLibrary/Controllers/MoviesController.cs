@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MoviDBLibrary.DataAccess.EF.Context;
 using MoviDBLibrary.DataAccess.EF.Models;
+using MovieDBLibrary.DataAccess.EF;
+using MovieDBLibrary.DataAccess.EF.Models;
 using MovieDBLibrary.Models;
-using System.Collections.Generic;
-using System.IO;
 
 
 namespace MovieDBLibrary.Controllers
@@ -28,11 +27,11 @@ namespace MovieDBLibrary.Controllers
 
         
         [HttpPost]
-        public IActionResult Index(int movieId, string title, int yearReleased, string director, string leadActorActress, string cast, string grossRevenue, string maturityRating, string imageUrl, ICollection<MoviesGenre> moviesGenres, ICollection<UserList> userLists)
+        public IActionResult Index(int movieId, int genreId, Genre? genre, string title, int yearReleased, string director, string leadActorActress, string cast, string grossRevenue, string maturityRating,  ICollection<UserList> userLists)
         {
             MoviesViewModel model = new MoviesViewModel(_dBContext);
 
-            Movies movie = new(movieId, title, yearReleased, director, leadActorActress, cast, grossRevenue, maturityRating, imageUrl, moviesGenres, userLists);
+            Movie movie = new(movieId, genreId, genre, title, yearReleased, director, leadActorActress, cast, grossRevenue, maturityRating,  userLists);
 
             model.SaveMovie(movie);
             model.IsActionSuccess = true;
@@ -47,9 +46,7 @@ namespace MovieDBLibrary.Controllers
             MoviesViewModel model = new MoviesViewModel(_dBContext, id);
             return View(model);
         }
-
-        
-        
+       
         public IActionResult Delete(int id)
         {
             MoviesViewModel model = new MoviesViewModel(_dBContext);
@@ -59,7 +56,7 @@ namespace MovieDBLibrary.Controllers
                 model.RemoveMovie(id);
             }
             model.IsActionSuccess = true;
-            model.ActionMessage = "Movie has been dleted successfully";
+            model.ActionMessage = "Movie has been deleted successfully";
             return View("Index", model);
             
         }

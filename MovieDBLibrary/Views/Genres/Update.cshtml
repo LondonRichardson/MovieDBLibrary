@@ -1,0 +1,33 @@
+﻿@model GenresViewModel
+@using MoviDBLibrary.DataAccess.EF.Models
+
+@{
+    string pageType = Model.CurrentGenre.Id > 0 ? "Update Genre" : "Create Genre";
+
+    ViewData["Title"] = $"MovieDBLibrary Wep Application | {pageType}";
+}
+<form action="~/Genre/Index" method="post">
+    <div>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 20px 0px;">@pageType</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Genre1: </label>
+                <input type="text" class="form-control" name="genre1" value="@Model.CurrentGenre.Genre1" />
+            </div>
+            <div class="col-md-3 form-group">
+                <label>Movies: </label>
+                <input type="text" class="form-control" name="movies" value="@Model.CurrentGenre.Movies" />
+            </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-secondary" onclick="location.href = '/Genre/Index'">CANCEL</button>
+                <button type="submit" class="btn btn-primary">SAVE GENRE</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="movieId" value="@Model.CurrentGenre.Id" />
+</form>

@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MoviDBLibrary.DataAccess.EF.Context;
-using MoviDBLibrary.DataAccess.EF.Models;
+using MovieDBLibrary.DataAccess.EF;
+using MovieDBLibrary.DataAccess.EF.Models;
 using MovieDBLibrary.Models;
-using System.Collections.Generic;
-using System.IO;
 
 
 namespace MovieDBLibrary.Controllers
@@ -18,50 +16,35 @@ namespace MovieDBLibrary.Controllers
             _dBContext = dBContext;
         }
 
-
-       
         public IActionResult Index()
         {
-            MoviesViewModel model = new MoviesViewModel(_dBContext);
+            GenresViewModel model = new GenresViewModel(_dBContext);
             return View(model);
         }
 
         
         [HttpPost]
-        public IActionResult Index(int movieId, string title, int yearReleased, string director, string leadActorActress, string cast, string grossRevenue, string maturityRating, string imageUrl, ICollection<MoviesGenre> moviesGenres, ICollection<UserList> userLists)
+        public IActionResult Index(int id,string genre1, ICollection<Movie> movies)
         {
-            MoviesViewModel model = new MoviesViewModel(_dBContext);
+            GenresViewModel model = new GenresViewModel(_dBContext);
 
-            Movies movie = new(movieId, title, yearReleased, director, leadActorActress, cast, grossRevenue, maturityRating, imageUrl, moviesGenres, userLists);
+            Genre genres = new(id,genre1, movies);
 
-            model.SaveMovie(movie);
+            model.SaveGenres(genres);
             model.IsActionSuccess = true;
-            model.ActionMessage = "Movie has been saved successfully";
+            model.ActionMessage = "Genre has been saved successfully";
             return View(model);
         }
 
-        
-        
+       
         public IActionResult Update(int id)
         {
-            MoviesViewModel model = new MoviesViewModel(_dBContext, id);
+            GenresViewModel model = new GenresViewModel(_dBContext, id);
             return View(model);
         }
 
         
         
-        public IActionResult Delete(int id)
-        {
-            MoviesViewModel model = new MoviesViewModel(_dBContext);
-
-            if(id > 0)
-            {
-                model.RemoveMovie(id);
-            }
-            model.IsActionSuccess = true;
-            model.ActionMessage = "Movie has been dleted successfully";
-            return View("Index", model);
-            
-        }
+        
     }
 }

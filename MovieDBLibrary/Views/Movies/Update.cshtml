@@ -18,9 +18,23 @@
                 <label>Title: </label>
                 <input type="text" class="form-control" name="title" value="@Model.CurrentMovie.Title" />
             </div>
-            <div class="col-md-3 form-group">
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Genre: </label>
+                <input type="text" class="form-control" name="genre" value="@Model.CurrentMovie.GenreId" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Year Released: </label>
+                <input type="text" class="form-control" name="yearReleased" value="@Model.CurrentMovie.YearReleased" />
+            </div>
+        </div>
+        <div>
+            <div class="col-md-3 offset-md-3 form-group">
                 <label>Director: </label>
-                <input type="text" class="form-control" name="Director" value="@Model.CurrentMovie.Director" />
+                <input type="text" class="form-control" name="director" value="@Model.CurrentMovie.Director" />
             </div>
         </div>
         <div class="form-row">
@@ -45,24 +59,6 @@
             <div class="col-md-6 offset-md-3 form-group">
                 <label>Maturity Rating: </label>
                 <input type="text" class="form-control" name="maturityRating" value="@Model.CurrentMovie.MaturityRating" />
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 offset-md-3 form-group">
-                <label>ImageUrl: </label>
-                <input type="text" class="form-control" name="imageUrl" value="@Model.CurrentMovie.ImageUrl" />
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 offset-md-3 form-group">
-                <label>Movie Genres: </label>
-                <input type="text" class="form-control" name="moviesGenres" value="@Model.CurrentMovie.MoviesGenres" />
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 offset-md-3 form-group">
-                <label>UserLists: </label>
-                <input type="text" class="form-control" name="userLists" value="@Model.CurrentMovie.UserLists" />
             </div>
         </div>
         <div class="form-row">
