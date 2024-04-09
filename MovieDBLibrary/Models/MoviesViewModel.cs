@@ -11,7 +11,7 @@ namespace MovieDBLibrary.Models
         public Movie CurrentMovie { get; set; } = null!;
         public bool IsActionSuccess { get; set; }
 
-        public string ActionMessage { get; set; }
+        public string? ActionMessage { get; set; }
 
         public MoviesViewModel(MovieDbContext context)
         {

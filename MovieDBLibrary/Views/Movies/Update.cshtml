@@ -20,9 +20,9 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-6 offset-md-3 form-group">
+            <div class="col-md-3 offset-md-3 form-group">
                 <label>Genre: </label>
-                <input type="text" class="form-control" name="genre" value="@Model.CurrentMovie.GenreId" />
+                <input type="text" class="form-control" name="genreId" value="@Model.CurrentMovie.GenreId" />
             </div>
         </div>
         <div class="form-row">
@@ -50,18 +50,19 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-6 offset-md-3 form-group">
+            <div class="col-md-4 offset-md-3 form-group">
                 <label>Gross Revenue: </label>
                 <input type="text" class="form-control" name="grossRevenue" value="@Model.CurrentMovie.GrossRevenue" />
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-6 offset-md-3 form-group">
+            <div class="col-md-3 offset-md-3 form-group">
                 <label>Maturity Rating: </label>
                 <input type="text" class="form-control" name="maturityRating" value="@Model.CurrentMovie.MaturityRating" />
             </div>
         </div>
-        <div class="form-row">
+        
+        <div class="form-row mt-3">
             <div class="col-md-6 offset-md-3">
                 <button type="button" class="btn btn-secondary" onclick="location.href = '/Movies/Index'">CANCEL</button>
                 <button type="submit" class="btn btn-primary">SAVE MOVIE</button>

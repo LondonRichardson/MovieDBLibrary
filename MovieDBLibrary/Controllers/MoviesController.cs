@@ -27,11 +27,12 @@ namespace MovieDBLibrary.Controllers
 
         
         [HttpPost]
-        public IActionResult Index(int movieId, int genreId, Genre? genre, string title, int yearReleased, string director, string leadActorActress, string cast, string grossRevenue, string maturityRating,  ICollection<UserList> userLists)
+        public IActionResult Index(int movieId, int genreId, string title, int yearReleased, string director, string leadActorActress, string cast, string grossRevenue, string maturityRating,  ICollection<UserList> userLists)
         {
+            
             MoviesViewModel model = new MoviesViewModel(_dBContext);
 
-            Movie movie = new(movieId, genreId, genre, title, yearReleased, director, leadActorActress, cast, grossRevenue, maturityRating,  userLists);
+            Movie movie = new(movieId, genreId, title, yearReleased, director, leadActorActress, cast, grossRevenue, maturityRating,  userLists);
 
             model.SaveMovie(movie);
             model.IsActionSuccess = true;

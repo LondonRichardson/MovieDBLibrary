@@ -11,7 +11,7 @@ namespace MovieDBLibrary.Models
         public Genre CurrentGenre { get; set; } 
         public bool IsActionSuccess { get; set; }
 
-        public string ActionMessage { get; set; }
+        public string? ActionMessage { get; set; }
 
         public GenresViewModel(MovieDbContext context)
         {
@@ -47,8 +47,14 @@ namespace MovieDBLibrary.Models
             GenreList = GetAllGenres();
             CurrentGenre = GetGenre(genres.Id);
         }
+        public void RemoveGenre(int genreId)
+        {
+            _repo.Delete(genreId);
+            GenreList = GetAllGenres();
+            CurrentGenre = GenreList.FirstOrDefault()!;
 
-        
+        }
+
         public List<Genre> GetAllGenres()
         {
             return _repo.GetAllGenre();

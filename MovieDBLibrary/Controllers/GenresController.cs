@@ -26,11 +26,12 @@ namespace MovieDBLibrary.Controllers
         [HttpPost]
         public IActionResult Index(int id,string genre1, ICollection<Movie> movies)
         {
+
             GenresViewModel model = new GenresViewModel(_dBContext);
 
-            Genre genres = new(id,genre1, movies);
+            Genre genres = new(id, genre1, movies);
 
-            model.SaveGenres(genres);
+            model.SaveGenre(genres);
             model.IsActionSuccess = true;
             model.ActionMessage = "Genre has been saved successfully";
             return View(model);
@@ -43,8 +44,20 @@ namespace MovieDBLibrary.Controllers
             return View(model);
         }
 
-        
-        
-        
+        public IActionResult Delete(int id)
+        {
+            GenresViewModel model = new GenresViewModel(_dBContext);
+
+            if (id > 0)
+            {
+                model.RemoveGenre(id);
+            }
+            model.IsActionSuccess = true;
+            model.ActionMessage = "Genre has been deleted successfully";
+            return View("Index", model);
+
+        }
+
+
     }
 }
