@@ -43,13 +43,12 @@
 
     <h1 class="display-4">Genre</h1>
     <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="genres-container">
             <table class="table">
                 <tr>
                     <th>Genres</th>
+                    <th>Movies</th>
                     
-                   
-
                     <th colspan="2"><button type="button" onclick="javascript:openLocation('/Genres/Update/0')" class="btn btn-success btn-sm">ADD NEW GENRE</button></th>
                 </tr>
 
@@ -57,7 +56,7 @@
                 {
                     <tr>
                         <td>@genres.Genre1</td>
-                        
+                                               
                         
                         <td><button type="button" onclick="javascript:openLocation('/Genres/Update/@genres.Id')" class="btn btn-secondary btn-sm">EDIT</button></td>
                         <td><button type="button" onclick="javascript:confirmDelete(@genres.Id)" class="btn btn-danger btn-sm">DELETE</button></td>

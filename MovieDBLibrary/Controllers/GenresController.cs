@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieDBLibrary.DataAccess.EF;
 using MovieDBLibrary.DataAccess.EF.Models;
 using MovieDBLibrary.Models;
+using System.Collections.Generic;
 
 
 namespace MovieDBLibrary.Controllers
@@ -23,13 +25,14 @@ namespace MovieDBLibrary.Controllers
         }
 
         
+
         [HttpPost]
-        public IActionResult Index(int id,string genre1, ICollection<Movie> movies)
+        public IActionResult Index(int id,string genre1, List<Movie> myMovies)
         {
 
             GenresViewModel model = new GenresViewModel(_dBContext);
 
-            Genre genres = new(id, genre1, movies);
+            Genre genres = new(id, genre1, myMovies);
 
             model.SaveGenre(genres);
             model.IsActionSuccess = true;
@@ -37,7 +40,7 @@ namespace MovieDBLibrary.Controllers
             return View(model);
         }
 
-       
+        
         public IActionResult Update(int id)
         {
             GenresViewModel model = new GenresViewModel(_dBContext, id);

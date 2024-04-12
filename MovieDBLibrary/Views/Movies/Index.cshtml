@@ -2,6 +2,7 @@
 @using MovieDBLibrary.DataAccess.EF.Models
 @{
     ViewData["Title"] = "MovieDBLibrary Web Application | Movies";
+
 }
 
 <script type="text/javascript">
@@ -40,12 +41,12 @@
             </button>
         </div>
     }
-
-    <h1 class="display-4">Movies</h1>
+    
+    <h1 class="display-4" style="color:blue;">Movies</h1><br></br>
     <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="movies-container">
             <table class="table">
-                <tr>
+                <tr class="table-headers">
                     <th>Title</th>
                     <th>Genre</th>
                     <th>YearReleased</th>
