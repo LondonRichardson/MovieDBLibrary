@@ -42,11 +42,12 @@
         </div>
     }
     
-    <h1 class="display-4" style="color:blue;">Movies</h1><br></br>
+    <h1 class="display-4">Movies</h1><br>
     <div class="row">
-        <div class="movies-container">
+        <div>
             <table class="table">
-                <tr class="table-headers">
+                <thead id="headers">
+                <tr>
                     <th>Title</th>
                     <th>Genre</th>
                     <th>YearReleased</th>
@@ -55,10 +56,9 @@
                     <th>Cast</th>
                     <th>Gross Revenue</th>
                     <th>Maturity Rating</th>
-                                      
-                    <th colspan="2"><button type="button" onclick="javascript:openLocation('/Movies/Update/0')" class="btn btn-success btn-sm">ADD NEW MOVIE</button></th>
+                    <th colspan="3"><button type="button" onclick="javascript:openLocation('/Movies/Update/0')" class="btn btn-success btn-sm">ADD NEW MOVIE</button></th>
                 </tr>
-
+                </thead>
                 @foreach (Movie movie in Model.MovieList)
                 {
                     <tr>

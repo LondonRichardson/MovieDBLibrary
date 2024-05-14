@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MovieDBLibrary.DataAccess.EF;
+using MovieDBLibrary.Data;
+using MoviDBLibrary.DataAccess.EF.Models;
+using MovieDBLibrary.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

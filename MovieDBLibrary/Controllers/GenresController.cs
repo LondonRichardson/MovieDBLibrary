@@ -27,12 +27,12 @@ namespace MovieDBLibrary.Controllers
         
 
         [HttpPost]
-        public IActionResult Index(int id,string genre1, List<Movie> myMovies)
+        public IActionResult Index(int id,string genre1)
         {
 
             GenresViewModel model = new GenresViewModel(_dBContext);
 
-            Genre genres = new(id, genre1, myMovies);
+            Genre genres = new(id, genre1);
 
             model.SaveGenre(genres);
             model.IsActionSuccess = true;

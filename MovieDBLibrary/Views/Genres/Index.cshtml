@@ -20,9 +20,9 @@
         $('#deleteModal').modal('hide');
     }
 
-    function deleteMovie() {
+    function deleteGenre() {
         var id = $("#hdnDeleteId").val();
-        window.location.href = "/Genre/Delete/" + id;
+        window.location.href = "/Genres/Delete/" + id;
     }
 </script>
 
@@ -41,13 +41,14 @@
         </div>
     }
 
-    <h1 class="display-4">Genre</h1>
+    <h1 class="display-4" style="color: blue;">Genre</h1>
     <div class="row">
         <div class="genres-container">
             <table class="table">
                 <tr>
                     <th>Genres</th>
                     <th>Movies</th>
+               
                     
                     <th colspan="2"><button type="button" onclick="javascript:openLocation('/Genres/Update/0')" class="btn btn-success btn-sm">ADD NEW GENRE</button></th>
                 </tr>
@@ -56,6 +57,19 @@
                 {
                     <tr>
                         <td>@genres.Genre1</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Movies
+                                </button>
+                                <ul class="dropdown-menu">
+                                @foreach(Movie movie in Model.MoviesList)
+                                {
+                                  <li><a class="dropdown-item" href="#">@movie.Title</a></li>  
+                                }
+                                </ul>
+                            </div>
+                        </td>
                                                
                         
                         <td><button type="button" onclick="javascript:openLocation('/Genres/Update/@genres.Id')" class="btn btn-secondary btn-sm">EDIT</button></td>
