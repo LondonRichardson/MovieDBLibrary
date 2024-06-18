@@ -10,7 +10,7 @@ namespace MovieDBLibrary.Models
     {
         private GenreRepository _repo;
         public List<Genre> GenreList { get; set; }
-        public List<Movie> MoviesList { get; set; }
+        
         public Movie CurrentMovie { get; set; }
         public Genre CurrentGenre { get; set; } 
         public bool IsActionSuccess { get; set; }
@@ -18,20 +18,13 @@ namespace MovieDBLibrary.Models
         public string? ActionMessage { get; set; }
 
 
-        /*
-         * Need a function to loop through your genres
-         * For each genre, get a list of movies for that genre
-         * Assign that list of movies to a List<Movie> on your Genre model
-         * Use the Genre.MovieList on your view and loop through that list
-         */
+        
         public GenresViewModel(MovieDbContext context)
         {
             _repo = new GenreRepository(context);
             GenreList = GetAllGenres();
-            CurrentGenre = GenreList.FirstOrDefault();
-            MoviesList = GetMoviesByGenreId(CurrentGenre.Id);
-           
-
+            SetCurrentGenreAndMovies();
+               
         }
         public GenresViewModel(MovieDbContext context, int genreId)
         {
@@ -46,7 +39,20 @@ namespace MovieDBLibrary.Models
                 CurrentGenre = new Genre();
             }
         }
+        private void SetCurrentGenreAndMovies()
+        {
+            if (GenreList != null && GenreList.Count > 0)
+            {
+                CurrentGenre = GenreList[0];
+            }
+            else
+            {
+                CurrentGenre = null;
+            }
+            
+        }
 
+       
         public void SaveGenre(Genre genres)
         {
             if (genres.Id > 0)
@@ -78,11 +84,6 @@ namespace MovieDBLibrary.Models
             return _repo.GetGenreByID(genreId);
         }
 
-        public List<Movie> GetMoviesByGenreId(int genreid)
-        {
-            return _repo.GetMoviesByGenreId(genreid).ToList();
-        }
-      
         internal void SaveGenres(Genre genres)
         {
             throw new NotImplementedException();
