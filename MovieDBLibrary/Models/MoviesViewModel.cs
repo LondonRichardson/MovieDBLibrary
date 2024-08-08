@@ -1,4 +1,5 @@
-﻿using MoviDBLibrary.DataAccess.EF.Repositories;
+﻿using Microsoft.AspNetCore.Mvc;
+using MoviDBLibrary.DataAccess.EF.Repositories;
 using MovieDBLibrary.DataAccess.EF;
 using MovieDBLibrary.DataAccess.EF.Models;
 
@@ -59,6 +60,8 @@ namespace MovieDBLibrary.Models
         {
             return _repo.GetMoviesWithGenres();
         }
+       
+        
         public Movie GetMovie(int movieId)
         {
             return _repo.GetMoviesByID(movieId);

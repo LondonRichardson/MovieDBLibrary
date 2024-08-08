@@ -43,6 +43,22 @@
     }
     
     <h1 class="display-4">Movies</h1><br>
+    <div class="row"> 
+        <div class"col-md-6">
+            <form class="d-flex" asp-action="Action" asp-controller="Movies" method="get">
+                <input name="searchString" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+                <select id="searchBy" name="searchBy" class="form-control me-1"> 
+                    <option value="genre">Genre</option>
+                    <option value="actor">Actor</option>
+                    <option value="director">Director</option>
+                </select>
+                <button class="btn btn-dark" type="submit">Search by movie info</button>
+            </form>
+        </div>
+        <div class"col-md-6">
+            <a asp-action="Index" class="text-dark">back to full list</a>
+        </div>
+    </div> <br>
     <div class="row">
         <div>
             <table class="table">
@@ -63,7 +79,7 @@
                 {
                     <tr>
                         <td>@movie.Title</td>
-                        <td>@movie.Genre!.Genre1</td>
+                        <td>@movie.Genre?.Genre1</td>
                         <td>@movie.YearReleased</td>
                         <td>@movie.Director</td>
                         <td>@movie.LeadActorActress</td>

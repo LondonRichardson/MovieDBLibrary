@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MovieDBLibrary.DataAccess.EF;
 
 namespace MovieDBLibrary.Data
 {
