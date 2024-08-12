@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MoviDBLibrary.Models\MoviDBLibrary.Models\MoviDBLibrary.DataAccess.EF.csproj" />
+    <ProjectReference Include="..\MoviDBLibrary.Models\MoviDBLibrary.DataAccess.EF.csproj" />
   </ItemGroup>
 
 </Project>
